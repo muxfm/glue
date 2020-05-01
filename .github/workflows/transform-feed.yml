@@ -28,7 +28,7 @@ jobs:
       run: |
         git config --local user.email "action@github.com"
         git config --local user.name "Github Actions"
-        ls | grep -v feed.* | xargs rm
+        rm -rf Makefile install-jtm.sh .github/workflows
         git add feed.xml feed.json
         git commit -am " :wind_chime: Feed update requested by ${{ github.event.comment.user.login }}"
         
