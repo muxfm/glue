@@ -9,7 +9,7 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
-    
+      
     - name: Add start reaction
       uses: peter-evans/create-or-update-comment@v1
       with:
@@ -28,9 +28,9 @@ jobs:
       run: |
         git config --local user.email "action@github.com"
         git config --local user.name "Github Actions"
-        rm -f Makefile install-jtm.sh
+        ls | grep -v feed.* | xargs rm
         git add feed.xml feed.json
-        git commit -am "Updated feed"
+        git commit -am " :wind_chime: Feed update requested by ${{ github.event.comment.user.login }}"
         
     - name: Push changes
       uses: ad-m/github-push-action@master
