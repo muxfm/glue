@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0" xmlns:itunes="http://www.itunes.com/dtds/podcast-1.0.dtd" xmlns:anchor="https://anchor.fm/xmlns">
+	<channel>
+		<title><![CDATA[oooxcast]]></title>
+		<description><![CDATA[baba baad main]]></description>
+		<link>https://check.krimlabs.com</link>
+		<image>
+			<url>https://d3t3ozftmdmh3i.cloudfront.net/production/podcast_uploaded/5116349/5116349-1588246982670-b5ab43f1e2839.jpg</url>
+			<title>oooxcast</title>
+			<link>https://check.krimlabs.com</link>
+		</image>
+		<generator>Anchor Podcasts</generator>
+		<lastBuildDate>Fri, 01 May 2020 03:57:38 GMT</lastBuildDate>
+		<atom:link href="https://oooox.com/feed.xml" rel="self" type="application/rss+xml"/>
+		<author><![CDATA[Shivek Khurana]]></author>
+		<copyright><![CDATA[Shivek Khurana]]></copyright>
+		<language><![CDATA[en]]></language>
+		<atom:link rel="hub" href="https://pubsubhubbub.appspot.com/"/>
+		<itunes:author>Shivek Khurana</itunes:author>
+		<itunes:summary>baba baad main</itunes:summary>
+		<itunes:type>episodic</itunes:type>
+		<itunes:owner>
+			<itunes:name>Shivek Khurana</itunes:name>
+			<itunes:email></itunes:email>
+		</itunes:owner>
+		<itunes:explicit>No</itunes:explicit>
+		<itunes:category text="News">
+			<itunes:category text="Tech News"/>
+		</itunes:category>
+		<itunes:image href="https://d3t3ozftmdmh3i.cloudfront.net/production/podcast_uploaded/5116349/5116349-1588246982670-b5ab43f1e2839.jpg"/>
+		<item>
+			<title><![CDATA[Sound Test]]></title>
+			<description><![CDATA[<p>Checking if everything works</p>
+]]></description>
+			<link>https://oooox.com/episodes/Sound-Test-edejr5</link>
+			<guid isPermaLink="false">4e792778-c269-4342-b430-03a8111b7872</guid>
+			<dc:creator><![CDATA[Shivek Khurana]]></dc:creator>
+			<pubDate>Thu, 30 Apr 2020 11:41:02 GMT</pubDate>
+			<enclosure url="https://anchor.fm/s/1f178454/podcast/play/13110565/https%3A%2F%2Fd3ctxlq1ktw2nl.cloudfront.net%2Fstaging%2F2020-04-30%2F49982530d14614b52262da5434cfcca9.m4a" length="679518" type="audio/x-m4a"/>
+			<itunes:summary>&lt;p&gt;Checking if everything works&lt;/p&gt;
+</itunes:summary>
+			<itunes:explicit>No</itunes:explicit>
+			<itunes:duration>41</itunes:duration>
+			<itunes:image href="https://d3t3ozftmdmh3i.cloudfront.net/production/podcast_uploaded_episode/5116349/5116349-1588246870948-8b808705e3759.jpg"/>
+			<itunes:episodeType>full</itunes:episodeType>
+		</item>
+	</channel>
+</rss>
