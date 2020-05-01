@@ -17,7 +17,7 @@ jobs:
         reactions: eyes
 
     - name: Fetch and transform feed
-      if: ${{ github.event.comment.body == "build" }}
+      if: ${{ github.event.comment.body == 'build' }}
       run: make feed
       env:
         # Change these to match your own settings
