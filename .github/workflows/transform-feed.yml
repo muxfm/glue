@@ -30,7 +30,7 @@ jobs:
         git config --local user.name "Github Actions"
         rm -rf Makefile install-jtm.sh .github/workflows
         git add feed.xml feed.json
-        git commit -am " :wind_chime: Feed update requested by ${{ github.event.comment.user.login }}"
+        git commit -am ":loudspeaker: Feed update requested by ${{ github.event.comment.user.login }}"
         
     - name: Push changes
       uses: ad-m/github-push-action@master
