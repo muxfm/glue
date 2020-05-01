@@ -9,6 +9,12 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
+    
+    - name: Add start reaction
+      uses: peter-evans/create-or-update-comment@v1
+      with:
+        comment-id: ${{ github.event.comment.id }}
+        reactions: eyes
 
     - name: Fetch and transform feed
       run: make feed
@@ -21,7 +27,7 @@ jobs:
     - name: Commit files
       run: |
         git config --local user.email "action@github.com"
-        git config --local user.name "GitHub Action"
+        git config --local user.name "Github Actions"
         git add feed.xml feed.json
         git commit -am "Updated feed"
         
@@ -30,3 +36,10 @@ jobs:
       with:
         github_token: ${{ secrets.GITHUB_TOKEN }}
         force: true
+        branch: gh-pages
+        
+    - name: Add start reaction
+      uses: peter-evans/create-or-update-comment@v1
+      with:
+        comment-id: ${{ github.event.comment.id }}
+        reactions: heart  
