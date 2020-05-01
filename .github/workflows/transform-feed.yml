@@ -28,6 +28,7 @@ jobs:
       run: |
         git config --local user.email "action@github.com"
         git config --local user.name "Github Actions"
+        rm -f Makefile install-jtm.sh
         git add feed.xml feed.json
         git commit -am "Updated feed"
         
@@ -38,7 +39,7 @@ jobs:
         force: true
         branch: gh-pages
         
-    - name: Add start reaction
+    - name: Add stop reaction
       uses: peter-evans/create-or-update-comment@v1
       with:
         comment-id: ${{ github.event.comment.id }}
