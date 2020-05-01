@@ -17,6 +17,18 @@ jobs:
         anchor-feed-url: https://anchor.fm/s/1f178454/podcast/rss
         anchor-username: oooxcast
         custom-base-url: https://oooxcast.fm
+        
+    - name: Commit files
+      run: |
+        git config --local user.email "action@github.com"
+        git config --local user.name "GitHub Action"
+        git commit -m "Add changes" -a
+        
+    - name: Push changes
+      uses: ad-m/github-push-action@master
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        force: true
 
     - name: Clean your mess
       run: make rm-tmp
