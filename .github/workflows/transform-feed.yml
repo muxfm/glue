@@ -2,14 +2,18 @@ name: transform-feed
 on:
   issue_comment:
     types: [created]
-    
+
 jobs:
   build:
     runs-on: ubuntu-latest
 
     steps:
     - uses: actions/checkout@v2
-      
+
+    - name: Validate comment
+      if: ${{ github.event.comment.body != 'build' }}
+      run: make phony-error
+
     - name: Add start reaction
       uses: peter-evans/create-or-update-comment@v1
       with:
@@ -24,7 +28,7 @@ jobs:
         anchor-feed-url: https://anchor.fm/s/1f178454/podcast/rss
         anchor-username: oooxcast
         custom-base-url: https://oooxcast.fm
-        
+
     - name: Commit files
       run: |
         git config --local user.email "action@github.com"
@@ -32,21 +36,21 @@ jobs:
         rm -rf Makefile install-jtm.sh .github/workflows
         git add feed.xml feed.json
         git commit -am ":loudspeaker: Feed update requested by ${{ github.event.comment.user.login }}"
-        
+
     - name: Push changes
       uses: ad-m/github-push-action@master
       with:
         github_token: ${{ secrets.GITHUB_TOKEN }}
         force: true
         branch: gh-pages
-        
+
     - name: Add success reaction
       uses: peter-evans/create-or-update-comment@v1
       if: ${{ success() }}
       with:
         comment-id: ${{ github.event.comment.id }}
-        reactions: heart  
-    
+        reactions: heart
+
     - name: Add fail reaction
       uses: peter-evans/create-or-update-comment@v1
       if: ${{ failure() }}

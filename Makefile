@@ -18,9 +18,12 @@ xml-to-json:
 	./jtm feed.xml > feed.json
 
 rm-tmp:
-	rm -f anchor-feed.xml with-our-rss.xml
+	rm -f anchor-feed.xml with-our-rss.xml jtm
 
 clean: rm-tmp
-	rm -f feed.xml feed.json jtm
+	rm -f feed.xml feed.json
 
 feed: fetch-feed install-jtm replace-rss-url replace-episode-urls xml-to-json rm-tmp
+
+phony-error:
+	$(error someone requested a phony error)
