@@ -17,6 +17,7 @@ jobs:
         reactions: eyes
 
     - name: Fetch and transform feed
+      if: ${{ github.event.comment.body == "build" }}
       run: make feed
       env:
         # Change these to match your own settings
@@ -39,8 +40,16 @@ jobs:
         force: true
         branch: gh-pages
         
-    - name: Add stop reaction
+    - name: Add success reaction
       uses: peter-evans/create-or-update-comment@v1
+      if: ${{ success() }}
       with:
         comment-id: ${{ github.event.comment.id }}
         reactions: heart  
+    
+    - name: Add fail reaction
+      uses: peter-evans/create-or-update-comment@v1
+      if: ${{ failure() }}
+      with:
+        comment-id: ${{ github.event.comment.id }}
+        reactions: -1
