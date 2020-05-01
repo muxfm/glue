@@ -10,8 +10,8 @@ jobs:
     steps:
     - uses: actions/checkout@v2
 
-    - name: Validate comment
-      if: ${{ github.event.comment.body != 'build' }}
+    - name: Validate comment and issue number
+      if: ${{ github.event.comment.body != 'build' || github.event.issue.number != 1 }}
       run: make phony-error
 
     - name: Add start reaction
@@ -53,7 +53,8 @@ jobs:
 
     - name: Add fail reaction
       uses: peter-evans/create-or-update-comment@v1
-      if: ${{ failure() }}
+      # Send fail responses only on issue number 1
+      if: ${{ failure() && github.event.issue.number == 1 }}
       with:
         comment-id: ${{ github.event.comment.id }}
         reactions: -1
