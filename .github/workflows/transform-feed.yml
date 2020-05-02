@@ -2,6 +2,8 @@ name: transform-feed
 on:
   issue_comment:
     types: [created]
+  repository_dispatch:
+        types: [build]
 
 jobs:
   build:
