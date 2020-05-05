@@ -35,7 +35,7 @@ jobs:
       run: |
         git config --local user.email "action@github.com"
         git config --local user.name "Github Actions"
-        rm -rf Makefile bin tmp ops *.clj *.md
+        rm -rf Makefile bin tmp ops *.clj *.md .git*
         git add public/*
         git commit -am ":loudspeaker: Feed update requested by ${{ github.event.comment.user.login }}" || echo "No new updates".
 
