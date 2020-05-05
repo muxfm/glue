@@ -1,29 +1,30 @@
-anchor-feed-url = https://anchor.fm/s/1f178454/podcast/rss
-anchor-username = oooxcast
-custom-base-url = https://oooox.com
+# Util
+phony-error:
+	$(error someone requested a phony error)
 
-fetch-feed:
-	curl -sL $(anchor-feed-url) -o anchor-feed.xml
-
+# Bootstrap
 install-jtm:
 	./install-jtm.sh
 
-replace-rss-url:
-	sed 's#$(anchor-feed-url)#$(custom-base-url)/feed.xml#g' ./anchor-feed.xml > with-our-rss.xml
+install-bb:
+	./install-bb.sh
 
-replace-episode-urls:
-	sed 's#https://anchor.fm/$(anchor-username)#$(custom-base-url)#g' ./with-our-rss.xml > feed.xml
+install: install-jtm install-bb
 
-xml-to-json:
-	./jtm feed.xml > feed.json
+fetch-feed:
+	@test $(feed-url) || (echo "usage: make fetch-feed feed-url=<url>" ; exit 1)
+	curl $(feed-url) -o anchor-feed.xml
 
+feed:
+	./bb get_feed.clj $(username) $(site-base)
+
+# Clean
 rm-tmp:
-	rm -f anchor-feed.xml with-our-rss.xml jtm
+	rm -f anchor-feed.xml anchor.html anchor.json
 
 clean: rm-tmp
-	rm -f feed.xml feed.json
+	rm -f feed.xml feed.json bb jtm
 
-feed: fetch-feed install-jtm replace-rss-url replace-episode-urls xml-to-json rm-tmp
-
-phony-error:
-	$(error someone requested a phony error)
+# Samples
+gen-sample-feed:
+	 make feed username=bravenotperfect site-base=https://bravenotperfect.com
