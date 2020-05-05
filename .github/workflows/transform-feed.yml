@@ -15,11 +15,7 @@ jobs:
     - name: Validate comment and issue number
       if: ${{ github.event.comment.body != 'build' || github.event.issue.number != 1 }}
       run: make phony-error
-
-    - name: Validate comment and issue number
-      if: ${{ !secrets.ANCHOR_USERNAME || !secrets.SITE_BASE }}
-      run: make phony-error
-
+      
     - name: Add start reaction
       uses: peter-evans/create-or-update-comment@v1
       with:
@@ -56,19 +52,13 @@ jobs:
         comment-id: ${{ github.event.comment.id }}
         reactions: heart
 
-    - name: Add fail comment when secrets are missing
-      uses: peter-evans/create-or-update-comment@v1
-      if: ${{ !secrets.ANCHOR_USERNAME || !secrets.SITE_BASE }}
-      with:
-        comment-id: ${{ github.event.comment.id }}
-        body: |
-            Required secrets **ANCHOR_USERNAME** and **SITE_BASE** are not set.
-
-
     - name: Add generic fail reaction
       uses: peter-evans/create-or-update-comment@v1
       # Send fail responses only on issue number 1
       if: ${{ failure() && github.event.issue.number == 1 }}
       with:
         comment-id: ${{ github.event.comment.id }}
+        body: |
+            The Action Failed. 
+            Please check that the required secrets **ANCHOR_USERNAME** and **SITE_BASE** are present.
         reactions: -1
