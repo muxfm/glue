@@ -16,14 +16,14 @@
   (shell/sh "curl" "-sL" url "-o" o))
 
 (defn xhtml->json [in out]
-  (shell/sh "bash" "-c" (str "./jtm " in " > " out))
+  (shell/sh "bash" "-c" (str "./bin/jtm " in " > " out))
   (wait/wait-for-path out))
 
 (defn fetch-podcast-feed-from-page-json [feed-url]
   (println "Fetching RSS feed at " feed-url)
-  (shell/sh "curl" "-sL" feed-url "-o" "anchor-feed.xml")
-  (wait/wait-for-path "anchor-feed.xml")
-  (slurp "anchor-feed.xml"))
+  (shell/sh "curl" "-sL" feed-url "-o" "./tmp/anchor-feed.xml")
+  (wait/wait-for-path "./tmp/anchor-feed.xml")
+  (slurp "./tmp/anchor-feed.xml"))
 
 (defn replace-anchor-feed-links [anchor-feed feed-url username site-base]
   (-> anchor-feed
@@ -34,25 +34,25 @@
       ;; Replace Episode urls with our own
       (str/replace (re-pattern (str "https://anchor.fm/" username))
                    site-base)
-      (->> (spit "feed.xml"))
+      (->> (spit "./public/feed.xml"))
       ))
 
 (defn main [username site-base]
   (println "Fetching public profile")
-  (fetch-file (str "https://anchor.fm/" username) "anchor.html")
+  (fetch-file (str "https://anchor.fm/" username) "./tmp/anchor.html")
 
   (println "Converting public profile html to json")
-  (xhtml->json "anchor.html" "anchor.json")
+  (xhtml->json "./tmp/anchor.html" "./tmp/anchor.json")
 
   (println "Parsing feed url")
-  (let [feed-url (json->feed-url "anchor.json")
+  (let [feed-url (json->feed-url "./tmp/anchor.json")
         anchor-feed (fetch-podcast-feed-from-page-json feed-url)]
 
     (println "Replacing Anchor links")
     (replace-anchor-feed-links anchor-feed feed-url username site-base)
 
-    (wait/wait-for-path "feed.xml")
-    (xhtml->json "feed.xml" "feed.json")
+    (wait/wait-for-path "./public/feed.xml")
+    (xhtml->json "./public/feed.xml" "./tmp/feed.json")
     ))
 
 

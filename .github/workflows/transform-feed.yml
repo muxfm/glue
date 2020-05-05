@@ -16,27 +16,30 @@ jobs:
       if: ${{ github.event.comment.body != 'build' || github.event.issue.number != 1 }}
       run: make phony-error
 
+    - name: Validate comment and issue number
+      if: ${{ !secrets.ANCHOR_USERNAME || !secrets.SITE_BASE }}
+      run: make phony-error
+
     - name: Add start reaction
       uses: peter-evans/create-or-update-comment@v1
       with:
         comment-id: ${{ github.event.comment.id }}
         reactions: eyes
 
-    - name: Fetch and transform feed
-      if: ${{ github.event.comment.body == 'build' }}
-      run: make feed
-      env:
-        # Change these to match your own settings
-        anchor-feed-url: https://anchor.fm/s/1f178454/podcast/rss
-        anchor-username: oooxcast
-        custom-base-url: https://oooxcast.fm
+    - name: Install deps
+      run: make install
+
+    - name: Fetch and parse feed
+      run: make feed username=${{ secrets.ANCHOR_USERNAME }} site-base=${{ secrets.SITE_BASE }}
+
+    - name: Feed to json
+      run: make transform
 
     - name: Commit files
       run: |
         git config --local user.email "action@github.com"
         git config --local user.name "Github Actions"
-        rm -rf Makefile install-jtm.sh .github/workflows
-        git add feed.xml feed.json
+        git add public/
         git commit -am ":loudspeaker: Feed update requested by ${{ github.event.comment.user.login }}"
 
     - name: Push changes
@@ -53,7 +56,17 @@ jobs:
         comment-id: ${{ github.event.comment.id }}
         reactions: heart
 
-    - name: Add fail reaction
+    - name: Add fail comment when secrets are missing
+      uses: peter-evans/create-or-update-comment@v1
+      if: ${{ !secrets.ANCHOR_USERNAME || !secrets.SITE_BASE }}
+      with:
+        comment-id: ${{ github.event.comment.id }}
+	body: |
+	      Required secrets **ANCHOR_USERNAME** and **SITE_BASE** are not set.
+	      Please refer the docs.
+
+
+    - name: Add generic fail reaction
       uses: peter-evans/create-or-update-comment@v1
       # Send fail responses only on issue number 1
       if: ${{ failure() && github.event.issue.number == 1 }}

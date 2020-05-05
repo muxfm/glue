@@ -4,24 +4,27 @@ phony-error:
 
 # Bootstrap
 install-jtm:
-	./install-jtm.sh
+	./ops/install-jtm.sh
 
 install-bb:
-	./install-bb.sh
+	./ops/install-bb.sh
 
 install: install-jtm install-bb
 
 # Do
 feed:
-	./bb get_feed.clj $(username) $(site-base)
+	./bin/bb get_feed.clj $(username) $(site-base)
+
+transform:
+	./bin/bb transform_feed.clj ./tmp/feed.json
 
 # Clean
-rm-tmp:
-	rm -f anchor-feed.xml anchor.html anchor.json
+clean:
+	rm -rf public/* tmp/*
 
-clean: rm-tmp
-	rm -f feed.xml feed.json meta.json bb jtm
+hard-clean: clean
+	rm -f bin/*
 
 # Samples
 gen-sample-feed:
-	 make feed username=dissect site-base=https://dsxt.fm
+	 make feed username=couples-therapy site-base=https://ct.fm

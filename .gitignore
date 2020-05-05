@@ -1,5 +1,8 @@
-bb
-jtm
+bin/bb
+bin/jtm
 *.json
 *.html
 *.xml
+
+# Emacs Cache Files
+.#*
