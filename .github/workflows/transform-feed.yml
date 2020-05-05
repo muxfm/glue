@@ -45,6 +45,7 @@ jobs:
         github_token: ${{ secrets.GITHUB_TOKEN }}
         force: true
         branch: gh-pages
+        directory: public 
 
     - name: Add success reaction
       uses: peter-evans/create-or-update-comment@v1
