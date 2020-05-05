@@ -1,0 +1,36 @@
+{
+  "itunes:summary" : "We talk about why we&apos;re making this podcast, the trials of living in the spotlight, and what we talk about in actual therapy.",
+  "dc:creator" : {
+    "!" : "[CDATA[Casey Neistat and Candice Pool]]"
+  },
+  "pubDate" : "Fri, 04 May 2018 14:51:28 GMT",
+  "itunes:duration" : "1905",
+  "itunes:image/" : {
+    "attributes" : {
+      "href" : "https://d3t3ozftmdmh3i.cloudfront.net/production/podcast_uploaded_nologo/520458/520458-1529077783947-a645a049d7d78.jpg"
+    }
+  },
+  "itunes:explicit" : "No",
+  "itunes:episodeType" : "full",
+  "enclosure/" : {
+    "attributes" : {
+      "length" : "30490876",
+      "type" : "audio/mpeg",
+      "url" : "https://anchor.fm/s/3b2be68/podcast/play/498839/https%3A%2F%2Fd3ctxlq1ktw2nl.cloudfront.net%2Fproduction%2F2018-4-3%2F2489818-44100-2-d029e16604455.mp3"
+    }
+  },
+  "title" : {
+    "!" : "[CDATA[Our First Podcast]]"
+  },
+  "link" : "https://ct.fm/episodes/Our-First-Podcast-e1dnmn",
+  "itunes:episode" : "1",
+  "guid" : [ {
+    "attributes" : {
+      "isPermaLink" : "false"
+    }
+  }, "505a987a-5689-7e21-2a0c-1c4338f582ba" ],
+  "description" : {
+    "!" : "[CDATA[We talk about why we're making this podcast, the trials of living in the spotlight, and what we talk about in actual therapy.\n]]"
+  },
+  "itunes:season" : "1"
+}

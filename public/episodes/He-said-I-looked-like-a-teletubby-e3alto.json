@@ -1,0 +1,36 @@
+{
+  "itunes:summary" : "Short but funny! Casey calls Candice a Teletubby and, oddly, she thinks it&apos;s hilarious. Throw in stories about supporting your partner in little ways and supporting yourself while being an entrepreneur. Q &amp; A&apos;s back again!",
+  "dc:creator" : {
+    "!" : "[CDATA[Casey Neistat and Candice Pool]]"
+  },
+  "pubDate" : "Wed, 27 Feb 2019 14:00:00 GMT",
+  "itunes:duration" : "1717",
+  "itunes:image/" : {
+    "attributes" : {
+      "href" : "https://d3t3ozftmdmh3i.cloudfront.net/production/podcast_uploaded_nologo/520458/520458-1529077783947-a645a049d7d78.jpg"
+    }
+  },
+  "itunes:explicit" : "Yes",
+  "itunes:episodeType" : "full",
+  "enclosure/" : {
+    "attributes" : {
+      "length" : "20613462",
+      "type" : "audio/mpeg",
+      "url" : "https://anchor.fm/s/3b2be68/podcast/play/2495864/https%3A%2F%2Fd3ctxlq1ktw2nl.cloudfront.net%2Fproduction%2F2019-1-26%2F10534294-44100-1-744d46c162c44.mp3"
+    }
+  },
+  "title" : {
+    "!" : "[CDATA[He said I looked like a teletubby]]"
+  },
+  "link" : "https://ct.fm/episodes/He-said-I-looked-like-a-teletubby-e3alto",
+  "itunes:episode" : "17",
+  "guid" : [ {
+    "attributes" : {
+      "isPermaLink" : "false"
+    }
+  }, "7c98bee3-648c-b888-75a3-3a026eafa4e4" ],
+  "description" : {
+    "!" : "[CDATA[Short but funny! Casey calls Candice a Teletubby and, oddly, she thinks it's hilarious. Throw in stories about supporting your partner in little ways and supporting yourself while being an entrepreneur. Q & A's back again!\n]]"
+  },
+  "itunes:season" : "1"
+}

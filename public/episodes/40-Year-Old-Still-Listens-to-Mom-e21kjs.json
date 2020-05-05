@@ -1,0 +1,36 @@
+{
+  "itunes:summary" : "Candice unapologetically still leans on her parents to be her... parents. Casey counters how he became his own parent as a runaway teen. Plus some pretty sloppy advice during questions and answers.",
+  "dc:creator" : {
+    "!" : "[CDATA[Casey Neistat and Candice Pool]]"
+  },
+  "pubDate" : "Fri, 17 Aug 2018 17:15:59 GMT",
+  "itunes:duration" : "2450",
+  "itunes:image/" : {
+    "attributes" : {
+      "href" : "https://d3t3ozftmdmh3i.cloudfront.net/production/podcast_uploaded_nologo/520458/520458-1529077783947-a645a049d7d78.jpg"
+    }
+  },
+  "itunes:explicit" : "Yes",
+  "itunes:episodeType" : "full",
+  "enclosure/" : {
+    "attributes" : {
+      "length" : "29419089",
+      "type" : "audio/mpeg",
+      "url" : "https://anchor.fm/s/3b2be68/podcast/play/1151036/https%3A%2F%2Fd3ctxlq1ktw2nl.cloudfront.net%2Fproduction%2F2018-7-21%2F4189019-44100-1-c22fbb761293b.mp3"
+    }
+  },
+  "title" : {
+    "!" : "[CDATA[40 Year Old Still Listens to Mom]]"
+  },
+  "link" : "https://ct.fm/episodes/40-Year-Old-Still-Listens-to-Mom-e21kjs",
+  "itunes:episode" : "11",
+  "guid" : [ {
+    "attributes" : {
+      "isPermaLink" : "false"
+    }
+  }, "150bcb4a-af22-f602-784e-d275f7269b7a" ],
+  "description" : {
+    "!" : "[CDATA[Candice unapologetically still leans on her parents to be her... parents. Casey counters how he became his own parent as a runaway teen. Plus some pretty sloppy advice during questions and answers.\n]]"
+  },
+  "itunes:season" : "1"
+}

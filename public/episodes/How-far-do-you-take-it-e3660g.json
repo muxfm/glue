@@ -1,0 +1,36 @@
+{
+  "itunes:summary" : "&lt;p&gt;Fake passwords, divorce, drugging toddlers, and fancy watches. Plus Q&amp;amp;A is back!&lt;/p&gt;",
+  "dc:creator" : {
+    "!" : "[CDATA[Casey Neistat and Candice Pool]]"
+  },
+  "pubDate" : "Mon, 11 Feb 2019 17:00:56 GMT",
+  "itunes:duration" : "2617",
+  "itunes:image/" : {
+    "attributes" : {
+      "href" : "https://d3t3ozftmdmh3i.cloudfront.net/production/podcast_uploaded_nologo/520458/520458-1529077783947-a645a049d7d78.jpg"
+    }
+  },
+  "itunes:explicit" : "Yes",
+  "itunes:episodeType" : "full",
+  "enclosure/" : {
+    "attributes" : {
+      "length" : "31420098",
+      "type" : "audio/mpeg",
+      "url" : "https://anchor.fm/s/3b2be68/podcast/play/2348496/https%3A%2F%2Fd3ctxlq1ktw2nl.cloudfront.net%2Fproduction%2F2019-1-11%2F9843774-44100-1-8e6d5ada96f6d.mp3"
+    }
+  },
+  "title" : {
+    "!" : "[CDATA[How far do you take it?]]"
+  },
+  "link" : "https://ct.fm/episodes/How-far-do-you-take-it-e3660g",
+  "itunes:episode" : "16",
+  "guid" : [ {
+    "attributes" : {
+      "isPermaLink" : "false"
+    }
+  }, "b105ece2-c37d-28e2-f0cf-43b7d61ccfc7" ],
+  "description" : [ {
+    "!" : "[CDATA[<p"
+  }, "Fake passwords, divorce, drugging toddlers, and fancy watches. Plus Q&amp;A is back!\n]]>" ],
+  "itunes:season" : "1"
+}
