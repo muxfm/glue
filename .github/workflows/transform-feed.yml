@@ -61,9 +61,8 @@ jobs:
       if: ${{ !secrets.ANCHOR_USERNAME || !secrets.SITE_BASE }}
       with:
         comment-id: ${{ github.event.comment.id }}
-	body: |
-	      Required secrets **ANCHOR_USERNAME** and **SITE_BASE** are not set.
-	      Please refer the docs.
+        body: |
+            Required secrets **ANCHOR_USERNAME** and **SITE_BASE** are not set.
 
 
     - name: Add generic fail reaction
