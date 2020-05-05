@@ -11,10 +11,7 @@ install-bb:
 
 install: install-jtm install-bb
 
-fetch-feed:
-	@test $(feed-url) || (echo "usage: make fetch-feed feed-url=<url>" ; exit 1)
-	curl $(feed-url) -o anchor-feed.xml
-
+# Do
 feed:
 	./bb get_feed.clj $(username) $(site-base)
 
@@ -23,8 +20,8 @@ rm-tmp:
 	rm -f anchor-feed.xml anchor.html anchor.json
 
 clean: rm-tmp
-	rm -f feed.xml feed.json bb jtm
+	rm -f feed.xml feed.json meta.json bb jtm
 
 # Samples
 gen-sample-feed:
-	 make feed username=bravenotperfect site-base=https://bravenotperfect.com
+	 make feed username=dissect site-base=https://dsxt.fm
