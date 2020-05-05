@@ -35,8 +35,8 @@ jobs:
       run: |
         git config --local user.email "action@github.com"
         git config --local user.name "Github Actions"
-        git add public/
-        git commit -am ":loudspeaker: Feed update requested by ${{ github.event.comment.user.login }}"
+        git add public/*
+        git commit -am ":loudspeaker: Feed update requested by ${{ github.event.comment.user.login }}" || echo "No new updates".
 
     - name: Push changes
       uses: ad-m/github-push-action@master
@@ -57,8 +57,20 @@ jobs:
       # Send fail responses only on issue number 1
       if: ${{ failure() && github.event.issue.number == 1 }}
       with:
-        comment-id: ${{ github.event.comment.id }}
-        body: |
-            The Action Failed. 
-            Please check that the required secrets **ANCHOR_USERNAME** and **SITE_BASE** are present.
+        comment-id: ${{ github.event.comment.id }}     
         reactions: -1
+        
+        
+    - name: Create error comment
+      uses: peter-evans/create-or-update-comment@v1
+      if: ${{ failure() && github.event.issue.number == 1 }}
+      with:
+        issue-number: 1
+        body: |
+          🤖 Beep Blop
+          I was not able to build the feed. It could be due to multiple reasons: 
+          - Make sure the required secrets: **ANCHOR_USERNAME** and **SITE_BASE** are present
+          - Check the actions pane for any error
+          - Read docs or raise an issue
+
+
