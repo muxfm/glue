@@ -37,7 +37,7 @@ jobs:
         git config --local user.name "Github Actions"
         rm -rf Makefile bin tmp ops *.clj *.md
         git add public/*
-        git commit -m ":loudspeaker: Feed update requested by ${{ github.event.comment.user.login }}" || echo "No new updates".
+        git commit -am ":loudspeaker: Feed update requested by ${{ github.event.comment.user.login }}" || echo "No new updates".
 
     - name: Push changes
       uses: ad-m/github-push-action@master
