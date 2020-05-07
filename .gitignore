@@ -1,8 +1,0 @@
-bin/bb
-bin/jtm
-tmp/*
-
-# Emacs Cache Files
-.#*
-
-# Don't ignore public/ files. We need them on tree so we can commit them to gh-pages.
