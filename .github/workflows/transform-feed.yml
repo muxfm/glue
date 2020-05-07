@@ -35,6 +35,7 @@ jobs:
       run: |
         git config --local user.email "action@github.com"
         git config --local user.name "Github Actions"
+        rm -rf Makefile bin tmp ops *.clj *.md .github
         git add public/*
         git commit -am ":loudspeaker: Feed update requested by ${{ github.event.comment.user.login }}" || echo "No new updates".
 
@@ -65,7 +66,8 @@ jobs:
       with:
         issue-number: 1
         body: |
-          🤖 Beep Blop
+          🤖
+          
           I was not able to build the feed. It could be due to multiple reasons: 
           - Make sure the required secrets: **ANCHOR_USERNAME** and **SITE_BASE** are present
           - Check the actions pane for any error
