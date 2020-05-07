@@ -2,6 +2,9 @@
 phony-error:
 	$(error someone requested a phony error)
 
+repl:
+	bb --nrepl-server 9000
+
 # Bootstrap
 install-jtm:
 	./ops/install-jtm.sh

@@ -39,11 +39,10 @@ jobs:
         git commit -am ":loudspeaker: Feed update requested by ${{ github.event.comment.user.login }}" || echo "No new updates".
 
     - name: Push changes
-      uses: ad-m/github-push-action@master
-      with:
-        github_token: ${{ secrets.GITHUB_TOKEN }}
-        force: true
-        branch: gh-pages
+      uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./public
 
     - name: Add success reaction
       uses: peter-evans/create-or-update-comment@v1
@@ -57,10 +56,9 @@ jobs:
       # Send fail responses only on issue number 1
       if: ${{ failure() && github.event.issue.number == 1 }}
       with:
-        comment-id: ${{ github.event.comment.id }}     
+        comment-id: ${{ github.event.comment.id }}
         reactions: -1
-        
-        
+
     - name: Create error comment
       uses: peter-evans/create-or-update-comment@v1
       if: ${{ failure() && github.event.issue.number == 1 }}

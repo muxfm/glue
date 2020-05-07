@@ -6,7 +6,7 @@
 (defn strip-cdata
   "Convert a string like [CDATA[Juice]] to Juice"
   [s]
-  (subs s 7 (- (count s) 2)))
+  (when s (subs s 7 (- (count s) 2))))
 
 (defn map->json [m]
   (json/generate-string m {:pretty true}))
@@ -50,14 +50,26 @@
       second
       (get "channel")))
 
-(defn episode-map->kv [m]
-  m)
+(defn cleanse-episode-map [m]
+  (into {} (pmap (fn [[k v]]
+                   (cond
+                     (contains? #{"description" "title" "dc:creator"} k)
+                     [k (-> v (get "!") strip-cdata)]
+
+                     (= k "guid") [k (second v)]
+
+                     (= k "enclosure/") ["enclosure" (get v "attributes")]
+
+                     (= k "itunes:image/") ["itunes:image" (get-in v ["attributes" "href"] nil)]
+                     :else [k v])
+                   ) m)))
 
 (defn transform-episodes [channel]
   (->> channel
        (filter episode?)
        (map #(get % "item"))
        (map #(apply merge %))
+       (map cleanse-episode-map)
        ))
 
 (defn save-individual-episode [transformed]
@@ -95,5 +107,8 @@
 
        (pmap save-individual-episode))
 
-  )
+  (let [tfd (transform-episodes (json-path->channel "./tmp/feed.json"))]
+    (spit "./public/episodes/index.json" (map->json tfd)))
 
+
+  )
