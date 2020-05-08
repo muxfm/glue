@@ -1,4 +1,8 @@
-;; Given a feed json from jtm, get channel meta, episode index and individual episodes
+(ns glue.transform-feed
+  "Given a feed json from jtm, get channel meta, episode index and individual episodes"
+  (:require [cheshire.core :as json]
+            [clojure.string :as str]
+            [clojure.java.io :as io]))
 
 (defn episode? [m]
   (contains? m "item"))
@@ -91,11 +95,12 @@
     (spit "./public/episodes/index.json" (map->json transformed-episodes))
     ))
 
-(let [[json-path] *command-line-args*]
-  (when (or (empty? json-path))
-    (println "Usage: <json-path>")
-    (System/exit 1))
-  (main json-path))
+(when *command-line-args*
+  (let [[json-path] *command-line-args*]
+    (when (or (empty? json-path))
+      (println "Usage: <json-path>")
+      (System/exit 1))
+    (main json-path)))
 
 (comment
   (def channel (json-path->channel "./tmp/feed.json"))

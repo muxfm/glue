@@ -1,4 +1,9 @@
-;; Given an anchor profile json, figure out the link to rss
+(ns glue.get-feed
+  "Given an anchor profile json, figure out the link to rss"
+  (:require [clojure.java.shell :as shell]
+            [cheshire.core :as json]
+            [babashka.wait :as wait]
+            [clojure.string :as str]))
 
 (defn json->feed-url [json-path]
   (-> json-path
@@ -56,12 +61,13 @@
     ))
 
 
-(let [[username site-base] *command-line-args*]
-  (when (or (empty? username) (empty? site-base))
-    (println "Usage: <username> <site-base>")
-    (println "Note: Sitebase should not included trailing slash")
-    (System/exit 1))
-  (main username site-base))
+(when *command-line-args*
+  (let [[username site-base] *command-line-args*]
+    (when (or (empty? username) (empty? site-base))
+      (println "Usage: <username> <site-base>")
+      (println "Note: Sitebase should not included trailing slash")
+      (System/exit 1))
+    (main username site-base)))
 
 
 (comment

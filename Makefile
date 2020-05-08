@@ -16,10 +16,13 @@ install: install-jtm install-bb
 
 # Do
 feed:
-	./bin/bb get_feed.clj $(username) $(site-base)
+	./bin/bb ./src/glue/get_feed.clj $(username) $(site-base)
 
 transform:
-	./bin/bb transform_feed.clj ./tmp/feed.json
+	./bin/bb ./src/glue/transform_feed.clj ./tmp/feed.json
+
+run-tests:
+	./bin/bb --classpath "src:test" ./test/glue/get_feed_test.clj
 
 # Clean
 clean:
