@@ -1,6 +1,8 @@
 (ns glue.get-feed
   "Given an anchor profile json, figure out the link to rss"
   (:require [clojure.java.shell :as shell]
+            [clojure.data.xml :as xml]
+            [clojure.java.io :as io]
             [cheshire.core :as json]
             [babashka.wait :as wait]
             [clojure.string :as str]))
@@ -17,6 +19,11 @@
       first
       (get-in ["link/" "attributes" "href"])))
 
+(comment
+  (str/replace "this is a string with a link: https://anchor.fm/episodes/Episode-About-Cats-2244 and this just embeded in a text"
+               (re-pattern "https://anchor.fm/episodes/.* ")
+               "https://site.fm/episodes/1 "))
+
 (defn fetch-file [url o]
   (shell/sh "curl" "-sL" url "-o" o))
 
@@ -24,7 +31,7 @@
   (shell/sh "bash" "-c" (str "./bin/jtm " in " > " out))
   (wait/wait-for-path out))
 
-(defn fetch-podcast-feed-from-page-json [feed-url]
+(defn fetch-podcast-feed [feed-url]
   (println "Fetching RSS feed at " feed-url)
   (shell/sh "curl" "-sL" feed-url "-o" "./tmp/anchor-feed.xml")
   (wait/wait-for-path "./tmp/anchor-feed.xml")
@@ -51,7 +58,7 @@
 
   (println "Parsing feed url")
   (let [feed-url (json->feed-url "./tmp/anchor.json")
-        anchor-feed (fetch-podcast-feed-from-page-json feed-url)]
+        anchor-feed (fetch-podcast-feed feed-url)]
 
     (println "Replacing Anchor links")
     (replace-anchor-feed-links anchor-feed feed-url username site-base)

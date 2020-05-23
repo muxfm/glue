@@ -1,4 +1,4 @@
-# Bulwark FM Glue
+# MuxFM Glue
 <details>
 <summary>🌅 Background</summary>
 
@@ -29,7 +29,7 @@ Clone this repo to your account.
 
 ## Setup Secrets
 The scripts need your `ANCHOR_USERNAME` and `SITE_BASE` address to transform the feed.
-The `SITE_BASE` should have no trailing slash, ex: `https://madebybulwark.fm`
+The `SITE_BASE` should have no trailing slash, ex: `https://madebymuxfm.fm`
 
 ## Open a build placeholder issue
 The first issue on the repository is like a terminal for triggering builds. 
@@ -39,7 +39,7 @@ You can also configure the Github workflow file to setup a cron.
 TODO: Perhaps we should setup a cron trigger, maybe once per day
 
 ## Done
-Well, not quite. This glue repository is setup and will transform your feed, but you still need to make a static site to consume this feed. Please check our reference implementation at https://github.com/bulwarkfm/static-site and set of reusable components at https://github.com/bulwarkfm/ui.
+Well, not quite. This glue repository is setup and will transform your feed, but you still need to make a static site to consume this feed. Please check our reference implementation at https://github.com/muxfm/static-site and set of reusable components at https://github.com/muxfm/ui.
 
 # Future Goals
 

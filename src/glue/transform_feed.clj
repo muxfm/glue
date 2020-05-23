@@ -74,6 +74,7 @@
        (map #(get % "item"))
        (map #(apply merge %))
        (map cleanse-episode-map)
+       (map #(assoc % "slug" (last (str/split (get % "link") #"/"))))
        ))
 
 (defn save-individual-episode [transformed]
@@ -92,7 +93,10 @@
 
     (doall
      (pmap save-individual-episode transformed-episodes))
-    (spit "./public/episodes/index.json" (map->json transformed-episodes))
+    (spit "./public/episodes/index.json" (map->json (->> transformed-episodes
+                                                         ;; delete summary and description from index
+                                                         (map #(dissoc %  "itunes:summary" "description"))
+                                                         )))
     ))
 
 (when *command-line-args*
